@@ -132,7 +132,19 @@ namespace WebApp.Controllers
             {
                 return HttpNotFound();
             }
-            return View(course);
+            var students = db.Students.ToList();
+            var courseEnrollments = db.CourseStudents.Where(cs => cs.CourseId == course.CourseID).ToList();
+            var enrolled = new List<Student>();
+            foreach (var student in students)
+            {
+                if (courseEnrollments.Find(cs => cs.StudentId == student.StudentID) != null) { enrolled.Add(student); }
+            }
+            if (enrolled.Count == 0) { return View(course); }
+            else
+            {
+                ViewBag.Course = course;
+                return View("DeleteError", enrolled);
+            }
         }
 
         // POST: Courses/Delete/5

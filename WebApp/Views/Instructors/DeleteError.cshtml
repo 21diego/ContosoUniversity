@@ -1,0 +1,44 @@
+﻿@model List<WebApp.Models.Course>
+@{
+    ViewBag.Title = "DeleteError";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DeleteError</h2>
+
+<h3>
+    You can't delete @ViewBag.Instructor.FullName because he teaches these courses:
+</h3>
+<table class="table">
+    <tr>
+        <th>
+            Title
+        </th>
+        <th>
+            Department
+        </th>
+        <th>
+            Capacity
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-sm btn-danger" })
+</p>

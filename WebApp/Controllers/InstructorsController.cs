@@ -88,12 +88,19 @@ namespace WebApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Instructor intructor = db.Instructors.Find(id);
-            if (intructor == null)
+            Instructor instructor = db.Instructors.Find(id);
+            if (instructor == null)
             {
                 return HttpNotFound();
             }
-            return View(intructor);
+            var mycourses = db.Courses.Where(c => c.InstructorID == instructor.InstructorID).ToList();
+            if(mycourses.Count == 0) { return View(instructor);}
+            else 
+            {
+                ViewBag.Instructor = instructor;
+                return View("DeleteError", mycourses); 
+            }
+            
         }
 
         // POST: Intructors/Delete/5

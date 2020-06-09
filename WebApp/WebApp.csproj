@@ -313,6 +313,8 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Instructors\DeleteError.cshtml" />
+    <Content Include="Views\Courses\DeleteError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
