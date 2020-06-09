@@ -1,0 +1,38 @@
+﻿@model WebApp.Models.Instructor
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Are you sure you want to delete @Model.FullName ?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HireDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HireDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color col-lg-offset-2">
+            @Html.ActionLink("No", "Index", null, new { @class = "btn btn-info" })
+            <input type="submit" value="Yes" class="btn btn-danger" />
+        </div>
+    }
+</div>

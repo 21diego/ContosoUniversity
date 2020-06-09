@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WebApp.Models.Instructor>
+
+@{
+    ViewBag.Title = "Instructors";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Instructors</h2>
+<div>
+    @using (Html.BeginForm())
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.Label("search", "Instructor's Name: ", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.Editor("search", new { htmlAttributes = new { @class = "form-control col-md-8" } })
+                <input type="submit" value="Search" class="btn btn-info col-md-offset-1" />
+            </div>
+        </div>
+    }
+</div>
+<p>
+    @Html.ActionLink("Add new Instructor", "Create", null, new { @class = "btn-sm btn-success"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HireDate)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HireDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.InstructorID }, new { @class = "btn-sm btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.InstructorID }, new { @class = "btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>

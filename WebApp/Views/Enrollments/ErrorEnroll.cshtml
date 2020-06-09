@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "ErrorEnroll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>The user @ViewBag.Student.FullName already enroll on @ViewBag.Course.Title</h2>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

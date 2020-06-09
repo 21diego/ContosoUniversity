@@ -1,0 +1,71 @@
+﻿@model WebApp.Models.Student
+
+@{
+    ViewBag.Title = "Enroll";
+    WebApp.Models.Course course = ViewBag.Course;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Enroll to @course.Title</h2>
+
+<div>
+    <h4>Course's Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Department")
+        </dt>
+
+        <dd>
+            @course.Department.Title
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Instructor")
+        </dt>
+
+        <dd>
+            @course.Instructor.FullName
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Course")
+        </dt>
+
+        <dd>
+            @course.Title
+        </dd>
+
+    </dl>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Student's information</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.FullName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
+            <input type="submit" value="Enroll" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}

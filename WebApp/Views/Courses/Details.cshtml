@@ -1,0 +1,87 @@
+﻿@model WebApp.Models.Course
+
+@{
+    List<WebApp.Models.Student> students = ViewBag.CourseEnrollments;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Course Information</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capacity)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Department.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Department.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instructor.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instructor.FullName)
+        </dd>
+
+
+    </dl>
+</div>
+<div>
+    <h4>Enrolled students</h4>
+    <hr />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Student's Full Name")
+            </th>
+            <th>
+                @Html.DisplayName("Email")
+            </th>
+        </tr>
+        @if (students.Count != 0)
+        {
+            foreach (var item in students)
+            {
+                <tr>
+                    <td>
+                        @item.FullName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="2" class="text-center">
+                    <b>No students enrolled yet</b>
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn-sm btn-danger"})
+</p>
