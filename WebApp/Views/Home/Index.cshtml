@@ -1,11 +1,44 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<style>
+    .img {
+        background: url(../../Content/university.jpg);
+        border-radius: 1em;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position-y: center;
+    }
+    .box {
+        padding: 8em 4em 8em 0;
+        border-radius: 1em;
+    }
+    .box h1 {
+        font-size: 63px;
+        color: black;
+        padding-left: 4rem;
+        background-color: rgba(5, 116, 224, 0.85);
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+    .box p {
+        margin-bottom: 15px;
+        font-size: 21px;
+        font-weight: 200;
+        color: black;
+        background-color: rgba(5, 116, 224, 0.85);
+        padding-left: 4rem;
+        border-bottom-right-radius: 1rem;
+        border-top-right-radius: 1rem;
+    }
+</style>
 
-<div class="jumbotron">
-    <h1>Welcome to Contoso University</h1>
-    <p class="lead">
-        You will be able to see a list of courses, departments and teachers in this academic unit. You can also sign up for the courses you need!
-    </p>
-    
+<div class="img">
+    <div class="box">
+        <h1>Welcome to Contoso University</h1>
+        <p class="lead">
+            You will be able to see a list of courses, departments and teachers in this academic unit. You can also sign up for the courses you need!
+        </p>
+    </div>
+
 </div>
